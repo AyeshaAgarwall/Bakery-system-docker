@@ -5,7 +5,7 @@ A containerized full-stack bakery ordering platform demonstrating Docker orchest
 ## **System Architecture**  
 The system follows a microservices architecture with five core components:  
 
-
+```
 ├───────────────────┬───────────────────┬───────────────────────────────┤
 │    [Frontend]     │     [Backend]     │         [Services]            │
 │  HTML/CSS/JS      │  Node.js          │                               │
@@ -30,7 +30,7 @@ The system follows a microservices architecture with five core components:
            ◄──────────────────┴───────────────────────────────────────────┤
 │                        Docker Network                                  │
 └───────────────────────────────────────────────────────────────────────┘
-
+```
 1. **Frontend Service**: HTML/CSS/JS files  
 2. **Backend Service**: Handling business logic  
 3. **Database Service**: PostgreSQL for persistent order storage  
