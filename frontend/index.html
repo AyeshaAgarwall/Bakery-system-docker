@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bakery Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Bakery Management System</h1>
+    
+    <div class="section">
+      <h2>Products</h2>
+      <button id="loadProducts">Load Products</button>
+      <div id="productsList"></div>
+    </div>
+    
+    <div class="section">
+      <h2>Place Order</h2>
+      <form id="orderForm">
+        <select id="productSelect" required>
+          <option value="">Select a product</option>
+        </select>
+        <input type="number" id="quantity" min="1" value="1" required>
+        <input type="text" id="customerName" placeholder="Your name" required>
+        <button type="submit">Place Order</button>
+      </form>
+      <div id="orderResult"></div>
+    </div>
+    
+    <div class="section">
+      <h2>Check Order Status</h2>
+      <input type="text" id="orderId" placeholder="Order ID">
+      <button id="checkOrder">Check Status</button>
+      <div id="orderStatus"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
