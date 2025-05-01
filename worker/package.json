@@ -1,9 +1,0 @@
-{
-  "name": "bakery-worker",
-  "version": "1.0.0",
-  "main": "worker.js",
-  "dependencies": {
-    "amqplib": "^0.8.0",
-    "pg": "^8.7.1"
-  }
-}
