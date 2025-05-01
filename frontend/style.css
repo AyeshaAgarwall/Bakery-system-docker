@@ -1,0 +1,165 @@
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f9f5f0;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  padding: 30px 0;
+  margin-bottom: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin: 0;
+  color: #5a3921;
+}
+
+h2, h3 {
+  color: #5a3921;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.order-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.order-form select, 
+.order-form input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  flex-grow: 1;
+  min-width: 200px;
+}
+
+button {
+  background-color: #8b5a2b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #6d4624;
+}
+
+.order-summary {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+#order-items {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+#order-items li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+}
+
+#order-items button {
+  background: none;
+  color: #c33;
+  padding: 0 5px;
+  font-size: 1.2rem;
+}
+
+.total {
+  font-weight: bold;
+  text-align: right;
+  margin: 15px 0;
+  font-size: 1.1rem;
+}
+
+.place-order-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+  background-color: #5a8b2b;
+}
+
+.place-order-btn:hover {
+  background-color: #4a7423;
+}
+
+.order-status {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.status-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.status-form input {
+  flex-grow: 1;
+  padding: 10px;
+  min-width: 200px;
+}
+
+#status-result {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px 0;
+  color: #999;
+}
+
+@media (min-width: 768px) {
+  main {
+    grid-template-columns: 1.5fr 1fr;
+  }
+  
+  .order-section {
+    grid-column: 1;
+  }
+  
+  .order-status {
+    grid-column: 2;
+    align-self: start;
+    position: sticky;
+    top: 20px;
+  }
+}

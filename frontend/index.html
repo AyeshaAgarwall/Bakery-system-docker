@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bakery Order System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Bakery Order</h1>
+      <p>Place your order below</p>
+    </header>
+
+    <main>
+      <section class="order-section">
+        <h2>Place Order</h2>
+        <div class="order-form">
+          <select id="product-select">
+            <option value="">-- Select a product --</option>
+          </select>
+          <input type="number" id="quantity" min="1" value="1" placeholder="Quantity">
+          <button onclick="addToOrder()">Add to Order</button>
+        </div>
+        
+        <div class="order-summary">
+          <h3>Your Order:</h3>
+          <ul id="order-items"></ul>
+          <p class="total">Total: ₹<span id="order-total">0</span></p>
+          <button class="place-order-btn" onclick="placeOrder()">Place Order</button>
+        </div>
+      </section>
+
+      <section class="order-status">
+        <h2>Check Order Status</h2>
+        <div class="status-form">
+          <input type="text" id="order-id-input" placeholder="Enter Order ID">
+          <button onclick="checkStatus()">Check Status</button>
+          <div id="status-result"></div>
+        </div>
+      </section>
+    </main>
+
+    
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
