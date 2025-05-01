@@ -1,0 +1,104 @@
+services:
+  database:
+    build: ./database
+    ports:
+      - "5432:5432"
+    networks:
+      - bakery_net
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: bakery_db
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_password
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      
+  backend:
+    build: ./backend
+    depends_on:
+      database:
+        condition: service_healthy
+    ports:
+      - "5000:5000"
+    networks:
+      - bakery_net
+    environment:
+      DB_HOST: database
+      POSTGRES_DB: bakery_db
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_password
+      REDIS_HOST: redis
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    networks:
+      - bakery_net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    environment:
+      - NODE_ENV=development
+      
+  redis:
+    image: redis:alpine
+    networks:
+      - bakery_net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"  # Management UI
+      - "5672:5672"    # AMQP protocol
+    networks:
+      - bakery_net
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  worker:
+    build: ./worker
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      database:
+        condition: service_healthy
+    networks:
+      - bakery_net
+    environment:
+      DB_HOST: database
+      POSTGRES_DB: bakery_db
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_password
+
+
+volumes:
+  db_data:
+
+networks:
+  bakery_net:
+    
